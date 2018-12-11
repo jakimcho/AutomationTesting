@@ -21,8 +21,8 @@ public class HelloJavaTest
         String pageTitle = driver.findElement( By.cssSelector( "#main-big-col > h3" ) )
                                  .getText( );
 
-        Assert.assertEquals( "Page is not Login!",
-                             "Login",
+        Assert.assertEquals( "Page is not LoginTests!",
+                             "LoginTests",
                              pageTitle );
 
         System.out.println( "\nEnvironment is ready for test automation course!" );
