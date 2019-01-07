@@ -1,54 +1,68 @@
 package com.qualityhouse.course.altae.datadriventesting.tests;
 
+import com.qualityhouse.course.altae.datadriventesting.data_providers.LoginDataProviders;
 import com.qualityhouse.course.altae.datadriventesting.pageobjects.CommonPageObjects;
 import com.qualityhouse.course.altae.datadriventesting.pageobjects.LoginPageObject;
+import com.qualityhouse.course.altae.datadriventesting.support.DriverFactory;
 import com.qualityhouse.course.altae.datadriventesting.support.User;
 import com.qualityhouse.course.altae.datadriventesting.support.Utils;
-import com.qualityhouse.course.altae.datadriventesting.testdata.LoginTestData;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
 
 public class LoginTests
 {
+    private WebDriver driver;
+    private LoginPageObject loginPage;
+    private CommonPageObjects common;
 
-    private WebDriver driver = new ChromeDriver();
-
-    private LoginPageObject loginPage = new LoginPageObject( driver);
-
-    private CommonPageObjects common = new CommonPageObjects( driver);
-
-    @Before
-    public void setup() { common.openApplication(); }
-
-    @After
-    public void tearDown() { common.closeApplication(); }
-
-    @Test
-    public void tcLoginWithValidCredentials() {
-        for ( User user : LoginTestData.validUsers) {
-            // so called "main test script"
-            loginPage.open();
-            loginPage.populateUsername(user.getUsername());
-            loginPage.populatePassword(user.getPassword());
-            loginPage.login();
-            Utils.isPresent( driver, common.menuLogout );
-            common.logout();
-        }
+    @Parameters( "browser" )
+    @BeforeMethod
+    public void setup( String browser )
+    {
+        this.driver = DriverFactory.getDriver( browser );
+        this.common = new CommonPageObjects( driver );
+        this.loginPage = new LoginPageObject( driver );
+        this.common.openApplication( );
     }
 
-    @Test
-    public void tcLoginWithInvalidCredentials() {
-        for ( User user : LoginTestData.invalidUsers) {
-            // so called "main test script"
-            loginPage.open();
-            loginPage.populateUsername(user.getUsername());
-            loginPage.populatePassword(user.getPassword());
-            loginPage.login();
-            Utils.isPresent(driver, common.menuLogin);
-        }
+    @AfterMethod
+    public void tearDown( )
+    {
+        this.driver.quit( );
+    }
+
+
+    @Test( dataProvider = "validLogins",
+           dataProviderClass = LoginDataProviders.class )
+    public void tcLoginWithValidCredentials( User user )
+    {
+        // so called "control script"
+        loginPage.open( );
+        loginPage.populateUsername( user.getUsername( ) );
+        loginPage.populatePassword( user.getPassword( ) );
+        loginPage.login( );
+        boolean isUserLoggedIn = Utils.isPresent( driver,
+                                                  common.menuLogout );
+        Assert.assertTrue( isUserLoggedIn,
+                           "User did not log in" );
+        common.logout( );
+    }
+
+    @Test( dataProvider = "invalidLogins",
+           dataProviderClass = LoginDataProviders.class )
+    public void tcLoginWithInvalidCredentials( User user )
+    {
+        // so called "control script"
+        loginPage.open( );
+        loginPage.populateUsername( user.getUsername( ) );
+        loginPage.populatePassword( user.getPassword( ) );
+        loginPage.login( );
+        boolean didLoginFail = Utils.isPresent( driver,
+                                                common.menuLogin );
+        Assert.assertTrue( didLoginFail,
+                           "User did log in" );
     }
 
 }

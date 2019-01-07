@@ -1,0 +1,22 @@
+[
+  {
+    "username": "student1",
+    "password": "stpass13"
+  },
+  {
+    "username": "student",
+    "password": "stpass2"
+  },
+  {
+    "username": "student3",
+    "password": ""
+  },
+  {
+    "username": "",
+    "password": "stpass1"
+  },
+  {
+    "username": "student1",
+    "password": "stpass2"
+  }
+]

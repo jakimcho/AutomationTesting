@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Login" verbose="1">
+    <test name="Logins">
+        <parameter name="browser" value="Chrome" />
+        <classes>
+            <class name="com.qualityhouse.course.altae.datadriventesting.tests.LoginTests"/>
+        </classes>
+    </test>
+</suite>

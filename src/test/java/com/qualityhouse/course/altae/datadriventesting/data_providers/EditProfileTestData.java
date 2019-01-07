@@ -1,4 +1,4 @@
-package com.qualityhouse.course.altae.datadriventesting.testdata;
+package com.qualityhouse.course.altae.datadriventesting.data_providers;
 
 import com.qualityhouse.course.altae.datadriventesting.support.User;
 

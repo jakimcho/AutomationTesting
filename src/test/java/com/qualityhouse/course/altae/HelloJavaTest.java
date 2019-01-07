@@ -1,12 +1,12 @@
 package com.qualityhouse.course.altae;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class HelloJavaTest
 {
@@ -28,7 +28,7 @@ public class HelloJavaTest
         System.out.println( "\nEnvironment is ready for test automation course!" );
     }
 
-    @Before
+    @BeforeMethod
     public void setUpPerTest( )
     {
 
@@ -38,7 +38,7 @@ public class HelloJavaTest
         this.driver = new ChromeDriver( );
     }
 
-    @After
+    @AfterMethod
     public void cleanUpAfterTest( )
     {
         this.driver.close( );

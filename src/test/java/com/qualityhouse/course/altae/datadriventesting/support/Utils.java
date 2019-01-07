@@ -19,6 +19,7 @@ public class Utils {
             // if element not exist return false
             return false;
         }
+
         return true;
     }
 
