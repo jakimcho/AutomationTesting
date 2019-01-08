@@ -1,16 +1,9 @@
 package com.qualityhouse.course.altae.keyworddriventesting.pageobjects;
 
-import com.qualityhouse.course.altae.keyworddriventesting.support.Utils;
-import com.qualityhouse.course.altae.keyworddriventesting.testdata.BooksTestData;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
-
 public class BooksPageObject {
 
-    private WebDriver driver;
+
+  /*  private WebDriver driver;
 
     public BooksPageObject( WebDriver webDriver ) {
         driver = webDriver;
@@ -18,7 +11,7 @@ public class BooksPageObject {
 
     private CommonPageObjects common = new CommonPageObjects(driver);
 
-    /* list of page components */
+    *//* list of page components *//*
 
     public String booksPageURL = "?page=books";
 
@@ -43,7 +36,7 @@ public class BooksPageObject {
     public By btnSearchSubmit = By.cssSelector( "input[type='submit']" );
 
 
-    /* list of page actions */
+    *//* list of page actions *//*
 
     public void openBooks() {
         Utils.waitForClicableElement( driver, common.menuBooks ).click( );
@@ -62,7 +55,7 @@ public class BooksPageObject {
     }
 
 
-    /* list of keywords */
+    *//* list of keywords *//*
 
     public void clearSearchForm() {
         driver.findElement(txtTitle).clear();
@@ -132,5 +125,5 @@ public class BooksPageObject {
 
         return bookFound;
     }
-
+*/
 }

@@ -1,67 +1,36 @@
 package com.qualityhouse.course.altae.keyworddriventesting.pageobjects;
 
-import com.qualityhouse.course.altae.keyworddriventesting.testdata.LoginTestData;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import com.qualityhouse.course.altae.keyworddriventesting.support.User;
+import net.serenitybdd.core.annotations.findby.FindBy;
+import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.annotations.DefaultUrl;
 
-public class LoginPageObject {
+@DefaultUrl( "/index.php?page=login" )
+public class LoginPageObject
+        extends BasePageObject
+{
+    @FindBy( name = "username" ) private WebElementFacade usernameFieldElement;
+    @FindBy( name = "userpass" ) private WebElementFacade passwordFieldElement;
+    @FindBy( name = "ses_login" ) private WebElementFacade loginButtonElement;
 
-    private WebDriver driver;
-
-    public LoginPageObject( WebDriver webDriver ) {
-        driver = webDriver;
+    public void loginWithUser( User user )
+    {
+        this.logger.info( "Inside loginWithUser() method" );
+        this.logger.info( "Populating the login form" );
+        this.usernameFieldElement.waitUntilEnabled( )
+                                 .type( user.getUsername( ) );
+        this.passwordFieldElement.waitUntilEnabled( )
+                                 .type( user.getPassword( ) );
+        this.logger.info( "Submitting login form" );
+        this.loginButtonElement.click( );
+        this.logger.info( "Exiting loginWithUser() method" );
     }
 
-    private CommonPageObjects common = new CommonPageObjects(driver);
-
-    /* list of page components */
-
-    public String loginPageURL = "?page=login";
-
-    public By txtUsername = By.id( "username" );
-
-    public By txtPassword = By.name( "userpass" );
-
-    public By btnLogin = By.name( "ses_login" );
-
-
-    /* list of page actions */
-
-    public void open() {
-        driver.get(common.applicationURL + loginPageURL);
+    public boolean isOpen( )
+    {
+        this.logger.info( "Inside isOpen() method" );
+        boolean isPageOpen = usernameFieldElement.isDisplayed( ) && usernameFieldElement.isDisplayed( );
+        this.logger.info( "Exiting isOpen() method with result: " + isPageOpen);
+        return isPageOpen;
     }
-
-    public void populateUsername(String username) {
-        driver.findElement(txtUsername).sendKeys(username);
-    }
-
-    public void populatePassword(String pwd) {
-        driver.findElement(txtPassword).sendKeys(pwd);
-    }
-
-    public void login() {
-        driver.findElement(btnLogin).click();
-    }
-
-
-    /* list of keywords */
-
-    public void loginAs(String username, String password) {
-        open();
-
-        populateUsername(username);
-
-        populatePassword(password);
-
-        login();
-    }
-
-    public void loginWithValidCredentials() {
-        loginAs( LoginTestData.validUsers.get(0).getUsername(), LoginTestData.validUsers.get( 0 ).getPassword( ) );
-    }
-
-    public void loginWithInvalidCredentials() {
-        loginAs(LoginTestData.invalidUsers.get(2).getUsername(), LoginTestData.invalidUsers.get(2).getPassword());
-    }
-
 }

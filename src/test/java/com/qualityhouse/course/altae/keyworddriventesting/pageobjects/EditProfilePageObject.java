@@ -1,12 +1,7 @@
 package com.qualityhouse.course.altae.keyworddriventesting.pageobjects;
 
-import com.qualityhouse.course.altae.keyworddriventesting.support.User;
-import com.qualityhouse.course.altae.keyworddriventesting.support.Utils;
-import com.qualityhouse.course.altae.keyworddriventesting.testdata.EditProfileTestData;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
 public class EditProfilePageObject {
+/*
 
     private WebDriver driver;
 
@@ -17,7 +12,9 @@ public class EditProfilePageObject {
     }
 
 
-    /* list of page components */
+    */
+/* list of page components *//*
+
 
     public String editProfileURL = "";
 
@@ -32,7 +29,9 @@ public class EditProfilePageObject {
     public By btnSubmit = By.cssSelector( "input[type='submit'][value='Submit']" );
 
 
-    /* list of page actions */
+    */
+/* list of page actions *//*
+
 
     public void open() {
         Utils.waitForClicableElement( driver, common.menuEditProfile ).click( );
@@ -67,7 +66,9 @@ public class EditProfilePageObject {
     }
 
 
-    /* list of keywords */
+    */
+/* list of keywords *//*
+
 
     public void modifyProfileDetails(String email, String name, String phone, String address) {
         populateEmail(email);
@@ -88,5 +89,6 @@ public class EditProfilePageObject {
     public void modifyProfileWithValidDetails() {
         modifyProfileDetailsOf( EditProfileTestData.validUsers.get( 0 ) );
     }
+*/
 
 }
