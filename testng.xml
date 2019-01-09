@@ -1,10 +1,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Login" verbose="1">
+<suite name="Regression" verbose="1">
+    <parameter name="browser" value="Chrome" />
     <test name="Logins">
-        <parameter name="browser" value="Chrome" />
         <classes>
             <class name="com.qualityhouse.course.altae.datadriventesting.tests.LoginTests"/>
+        </classes>
+    </test>
+    <test name="Profiles">
+        <parameter name="username" value="student1" />
+        <parameter name="password" value="stpass1" />
+        <classes>
+            <class name="com.qualityhouse.course.altae.datadriventesting.tests.EditProfileTests"/>
         </classes>
     </test>
 </suite>

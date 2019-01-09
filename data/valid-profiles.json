@@ -1,0 +1,26 @@
+[
+  {
+    "username": "student1",
+    "password": "stpass1",
+    "name": "Ivanov",
+    "email": "gogo@sdf.com",
+    "phone": "3",
+    "address": "Sofia"
+  },
+  {
+    "username": "student2",
+    "password": "stpass2",
+    "name": "a",
+    "email": "gssogo@sdf.com",
+    "phone": "a",
+    "address": "b"
+  },
+  {
+    "username": "student3",
+    "password": "stpass3",
+    "name": "Sa",
+    "email": "d@",
+    "phone": "3",
+    "address": "Sofia"
+  }
+]
