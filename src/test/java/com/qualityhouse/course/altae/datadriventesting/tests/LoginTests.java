@@ -1,6 +1,6 @@
 package com.qualityhouse.course.altae.datadriventesting.tests;
 
-import com.qualityhouse.course.altae.datadriventesting.data_providers.UserDataProviders;
+import com.qualityhouse.course.altae.datadriventesting.data_providers.LoginDataProviders;
 import com.qualityhouse.course.altae.datadriventesting.pageobjects.CommonPageObjects;
 import com.qualityhouse.course.altae.datadriventesting.pageobjects.LoginPageObject;
 import com.qualityhouse.course.altae.datadriventesting.support.DriverFactory;
@@ -33,9 +33,9 @@ public class LoginTests
         this.driver.quit( );
     }
 
-    @Ignore
+
     @Test( dataProvider = "validLogins",
-           dataProviderClass = UserDataProviders.class )
+           dataProviderClass = LoginDataProviders.class )
     public void tcLoginWithValidCredentials( User user )
     {
         // so called "control script"
@@ -50,9 +50,8 @@ public class LoginTests
         common.logout( );
     }
 
-    @Ignore
     @Test( dataProvider = "invalidLogins",
-           dataProviderClass = UserDataProviders.class )
+           dataProviderClass = LoginDataProviders.class )
     public void tcLoginWithInvalidCredentials( User user )
     {
         // so called "control script"
