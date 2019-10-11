@@ -8,6 +8,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class HelloJavaTest
 {
     private WebDriver driver;
@@ -16,7 +19,7 @@ public class HelloJavaTest
     public void testLoginPageDisplays( )
     {
 
-        this.driver.get( "http://www.acme.qualityhouse.bg/build1/index.php?page=login" );
+        this.driver.get( "http://www.acme.qualityhouse.com/build1/index.php?page=login" );
 
         String pageTitle = driver.findElement( By.cssSelector( "#main-big-col > h3" ) )
                                  .getText( );
@@ -35,6 +38,19 @@ public class HelloJavaTest
         // Optional, if not specified, WebDriver will search your path for chromedriver.
         // System.seProperty("webdriver.chrome.driver", "path to chrome driver");
 
+        Map<String, String> driversPath = new HashMap<>( );
+        driversPath.put( "linux",
+                         "drivers/linux/chromedriver" );
+        driversPath.put( "mac",
+                         "drivers/mac/chromedriver" );
+        driversPath.put( "windows",
+                         "drivers/windows/chromedriver.exe" );
+        String tasOS = System.getProperty( "os.name" )
+                             .toLowerCase( )
+                             .split( " " )[0];
+        System.out.println( "Current OS is: " + tasOS );
+        System.setProperty( "webdriver.chrome.driver",
+                            driversPath.get( tasOS ) );
         this.driver = new ChromeDriver( );
     }
 
