@@ -2,7 +2,6 @@ package com.qualityhouse.course.altae.keyworddriventesting.steps.library;
 
 
 import com.qualityhouse.course.altae.keyworddriventesting.pageobjects.BasePageObject;
-import com.qualityhouse.course.altae.keyworddriventesting.pageobjects.EditProfilePageObject;
 import com.qualityhouse.course.altae.keyworddriventesting.pageobjects.LoginPageObject;
 import com.qualityhouse.course.altae.keyworddriventesting.support.User;
 import net.thucydides.core.annotations.Step;
@@ -15,7 +14,6 @@ public class BaseUserSteps
     private static final Logger logger = Logger.getLogger( BaseUserSteps.class );
     private BasePageObject basePageObject;
     private LoginPageObject loginPageObject;
-    private EditProfilePageObject editProfilePageObject;
 
     @Step
     public void openSite( )
@@ -51,20 +49,6 @@ public class BaseUserSteps
         basePageObject.clickOnButton( button );
     }
 
-    @Step
-    public void isOnPage( String pageName )
-    {
-        logger.info( "Inside isOnPage method" );
-        logger.info( "Trying to open page: " + pageName );
-        switch( pageName )
-        {
-            case "Edit Profile":
-                editProfilePageObject.open( );
-                break;
-
-        }
-    }
-
     public void hasLoggedInSuccessfully( )
     {
         Assert.assertTrue( "User is not logged in",
@@ -92,14 +76,8 @@ public class BaseUserSteps
     public void shouldSeeElementWithHref( String elementHref )
     {
         String cssSelector = "[href*='link']".replace( "link",
-                                                       elementHref );
+                                                      elementHref );
         Assert.assertTrue( "Element with href " + elementHref + " is not displayed",
                            this.loginPageObject.elementIsDisplayed( By.cssSelector( cssSelector ) ) );
-    }
-
-    public void shouldSeeMessage( String message )
-    {
-        String actualMessage = editProfilePageObject.getMessage();
-        Assert.assertEquals(  message, actualMessage);
     }
 }

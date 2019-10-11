@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         features = "keyword_driven_features/",
         glue = "com.qualityhouse.course.altae.keyworddriventesting.steps.definitions",
         snippets = SnippetType.CAMELCASE,
-        tags = { "@debug" } )
+        tags = { "@regression" } )
 
 public class AutomationRunner
 {

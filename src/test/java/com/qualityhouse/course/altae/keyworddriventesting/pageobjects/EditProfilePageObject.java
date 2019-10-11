@@ -1,23 +1,94 @@
 package com.qualityhouse.course.altae.keyworddriventesting.pageobjects;
 
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.DefaultUrl;
+public class EditProfilePageObject {
+/*
 
-@DefaultUrl( "/index.php?page=edit-profile" )
-public class EditProfilePageObject
-        extends BasePageObject
-{
+    private WebDriver driver;
 
-    @FindBy( css = "#main-big-col b" ) private WebElementFacade messageElement;
+    private CommonPageObjects common = new CommonPageObjects(driver);
 
-    public String getMessage( )
-    {
-        logger.info( "Inside getMessage method" );
-        String message = messageElement.waitUntilVisible( )
-                                       .getText( )
-                                       .trim( );
-        logger.info( "Got message: " + message );
-        return message;
+    public EditProfilePageObject( WebDriver driver ) {
+        this.driver = driver;
     }
+
+
+    */
+/* list of page components *//*
+
+
+    public String editProfileURL = "";
+
+    public By txtEmail = By.name( "cEmail" );
+
+    public By txtName = By.name( "cName" );
+
+    public By txtPhone = By.name( "cPhone" );
+
+    public By txtAddress = By.name( "cAddress" );
+
+    public By btnSubmit = By.cssSelector( "input[type='submit'][value='Submit']" );
+
+
+    */
+/* list of page actions *//*
+
+
+    public void open() {
+        Utils.waitForClicableElement( driver, common.menuEditProfile ).click( );
+    }
+
+    public void populateEmail(String email) {
+        driver.findElement(txtEmail).clear();
+
+        driver.findElement(txtEmail).sendKeys(email);
+    }
+
+    public void populateName(String name) {
+        driver.findElement(txtName).clear();
+
+        driver.findElement(txtName).sendKeys(name);
+    }
+
+    public void populatePhone(String phone) {
+        driver.findElement(txtPhone).clear();
+
+        driver.findElement(txtPhone).sendKeys(phone);
+    }
+
+    public void populateAddress(String address) {
+        driver.findElement(txtAddress).clear();
+
+        driver.findElement(txtAddress).sendKeys(address);
+    }
+
+    public void submitProfileDetails() {
+        Utils.waitForClicableElement(driver, btnSubmit).click();
+    }
+
+
+    */
+/* list of keywords *//*
+
+
+    public void modifyProfileDetails(String email, String name, String phone, String address) {
+        populateEmail(email);
+
+        populateName(name);
+
+        populatePhone(phone);
+
+        populateAddress(address);
+
+        submitProfileDetails();
+    }
+
+    public void modifyProfileDetailsOf( User user ) {
+        modifyProfileDetails(user.getEmail(), user.getName(), user.getPhone(), user.getAddress());
+    }
+
+    public void modifyProfileWithValidDetails() {
+        modifyProfileDetailsOf( EditProfileTestData.validUsers.get( 0 ) );
+    }
+*/
+
 }

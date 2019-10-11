@@ -120,5 +120,4 @@ public class BasePageObject
         this.logger.info( "Inside elementIsDisplayed() method with result " + result );
         return result;
     }
-
 }

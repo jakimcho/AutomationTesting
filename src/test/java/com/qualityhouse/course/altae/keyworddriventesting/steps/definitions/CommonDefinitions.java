@@ -23,7 +23,6 @@ public class CommonDefinitions
         someUser.clicksOnMenuItem( page );
     }
 
-    @Given( "^a user is logged in:$" )
     @When( "^a user logs in:$" )
     public void aUserLogsIn( @Transpose Map<String, String> userRawData )
     throws
@@ -50,16 +49,5 @@ public class CommonDefinitions
             Throwable
     {
         someUser.hasLoggedInFailed( );
-    }
-
-
-    @Given("^the user is on \"([^\"]*)\" page$")
-    public void theUserIsOnPage(String pageName) {
-        someUser.isOnPage(pageName);
-    }
-
-    @Then("^the user should see \"([^\"]*)\" message$")
-    public void theUserShouldSeeMessage(String message) {
-        someUser.shouldSeeMessage(message);
     }
 }
